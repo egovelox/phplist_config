@@ -35,20 +35,19 @@ http {
         listen       80;
         listen       [::]:80;
         server_name  ${SITE_NAME};
-        # server_name  _;
 
-	location / {
-	    root   /var/www/${SITE_NAME};
-	    index  index.php;
-	}
+	      location / {
+	          root   /var/www/${SITE_NAME};
+	          index  index.php;
+	      }
 
-	location ~ \.php$ {
-      root		        /var/www/${SITE_NAME};
-	    fastcgi_pass    unix:/var/run/php-fpm/www.sock;
-	    fastcgi_index	  index.php;
-	    fastcgi_param	  SCRIPT_FILENAME $document_root$fastcgi_script_name;
-	    include		      fastcgi_params;
-	}
+	      location ~ \.php$ {
+            root		        /var/www/${SITE_NAME};
+	          fastcgi_pass    unix:/var/run/php-fpm/php8.2-fpm.sock;
+	          fastcgi_index	  index.php;
+	          fastcgi_param	  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	          include		      fastcgi_params;
+	      }
 
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
@@ -61,32 +60,4 @@ http {
         location = /50x.html {
         }
     }
-
-# Settings for a TLS enabled server.
-#
-#    server {
-#        listen       443 ssl http2;
-#        listen       [::]:443 ssl http2;
-#        server_name  _;
-#        root         /usr/share/nginx/html;
-#
-#        ssl_certificate "/etc/pki/nginx/server.crt";
-#        ssl_certificate_key "/etc/pki/nginx/private/server.key";
-#        ssl_session_cache shared:SSL:1m;
-#        ssl_session_timeout  10m;
-#        ssl_ciphers PROFILE=SYSTEM;
-#        ssl_prefer_server_ciphers on;
-#
-#        # Load configuration files for the default server block.
-#        include /etc/nginx/default.d/*.conf;
-#
-#        error_page 404 /404.html;
-#        location = /404.html {
-#        }
-#
-#        error_page 500 502 503 504 /50x.html;
-#        location = /50x.html {
-#        }
-#    }
-
 }

@@ -39,7 +39,7 @@ define('PHPMAILER_SECURE','ssl');
 
 #define('PHPMAILER_SMTP_DEBUG', 2); 
 
-define('PHPMAILERHOST', 'smtp.gmail.com');
+define('PHPMAILERHOST', '${SMTP_MAILER_HOST}');
 $phpmailer_smtpuser = '${SMTP_USER}';
 $phpmailer_smtppassword = '${SMTP_PASSWORD}';
 
@@ -48,6 +48,7 @@ $phpmailer_smtppassword = '${SMTP_PASSWORD}';
 // on unmanaged systems
 
 define('TEST', 0);
+define('PLUGIN_ROOTDIR', 'plugins');
 /*
 
 ==============================================================================================================
@@ -67,8 +68,9 @@ define('TEST', 0);
 // This is the address that most bounces will be delivered to
 // Your should make this an address that no PERSON reads
 // but a mailbox that phpList can empty every so often, to process the bounces
-
 // $message_envelope = 'listbounces@yourdomain';
+
+$message_envelope = '${SMTP_USER}';
 
 // Handling bounces. Check README.bounces for more info
 // This can be 'pop' or 'mbox'
@@ -81,23 +83,22 @@ $bounce_protocol = 'pop';
 define('MANUALLY_PROCESS_BOUNCES', 1);
 
 // when the protocol is pop, specify these three
-$bounce_mailbox_host = 'localhost';
-$bounce_mailbox_user = 'popuser';
-$bounce_mailbox_password = 'password';
+$bounce_mailbox_host = '${POP_MAILER_HOST}';
+$bounce_mailbox_user = '${SMTP_USER}';
+$bounce_mailbox_password = '${SMTP_PASSWORD}';
 
 // the "port" is the remote port of the connection to retrieve the emails
 // the default should be fine but if it doesn't work, you can try the second
 // one. To do that, add a # before the first line and take off the one before the
 // second line
-$bounce_mailbox_port = '110/pop3/notls';
 //$bounce_mailbox_port = "110/pop3";
 
 // it's getting more common to have secure connections, in which case you probably want to use
-//$bounce_mailbox_port = "995/pop3/ssl/novalidate-cert";
+$bounce_mailbox_port = "995/pop3/ssl/novalidate-cert";
 
 // when the protocol is mbox specify this one
 // it needs to be a local file in mbox format, accessible to your webserver user
-$bounce_mailbox = '/var/mail/listbounces';
+//$bounce_mailbox = '/var/mail/listbounces';
 
 // set this to 0 if you want to keep your messages in the mailbox. this is potentially
 // a problem, because bounces will be counted multiple times, so only do this if you are
@@ -111,7 +112,7 @@ $bounce_mailbox_purge = 1;
 $bounce_mailbox_purge_unprocessed = 1;
 
 // how many bounces in a row need to have occurred for a user to be marked unconfirmed
-$bounce_unsubscribe_threshold = 5;
+$bounce_unsubscribe_threshold = 1;
 
 // choose the hash method for password
 // check the extended config for more info
