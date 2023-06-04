@@ -16,6 +16,17 @@
 */
 $pageroot = '/';
 
+define('LANGUAGE_SWITCH', 0);
+
+// Show the link(s) to subscribe page(s) on the phpList public homepage (lists/)
+define('SHOW_SUBSCRIBELINK', true);
+
+// Show link to the preferences page on the phpList public homepage (lists/)
+define('SHOW_PREFERENCESLINK', false);
+
+// Show link to the unsubscribe page on the phpList public homepage (lists/)
+define('SHOW_UNSUBSCRIBELINK', false);
+
 // what is your Mysql database server hostname
 $database_host = 'localhost';
 
@@ -109,7 +120,7 @@ $bounce_mailbox_purge = 1;
 // messages are messages that could not be matched with a user in the system
 // messages are still downloaded into phpList, so it is safe to delete them from
 // the mailbox and view them in phpList
-$bounce_mailbox_purge_unprocessed = 1;
+$bounce_mailbox_purge_unprocessed = 0;
 
 // how many bounces in a row need to have occurred for a user to be marked unconfirmed
 $bounce_unsubscribe_threshold = 1;
