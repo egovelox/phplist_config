@@ -119,4 +119,29 @@ $bounce_unsubscribe_threshold = 1;
 // in most cases, it is fine to leave this as it is
 define('HASH_ALGO', 'sha256');
 
+// CREDITS
+// We request you retain some form of credits on the public elements of
+// phpList. These are the subscribe pages and the emails.
+// This not only gives respect to the large amount of time given freely
+// by the developers but also helps build interest, traffic and use of
+// phpList, which is beneficial to future developments.
+// By default the webpages and the HTML emails will include an image and
+// the text emails will include a powered by line
+
+// If you want to remove the image from the HTML emails, set this constant
+// to be 1, the HTML emails will then only add a line of text as signature
+define('EMAILTEXTCREDITS', 1);
+
+// if you want to also remove the image from your public webpages
+// set the next one to 1, and the pages will only include a line of text
+define('PAGETEXTCREDITS', 1);
+
+// in order to get some feedback about performance, phpList can send statistics to a central
+// email address. To de-activate this set the following value to 1
+define('NOSTATSCOLLECTION', 1);
+
+// this is the email it will be sent to. You can leave the default, or you can set it to send
+// to your self. If you use the default you will give me some feedback about performance
+// which is useful for me for future developments
+// $stats_collection_address = 'phplist-stats@phplist.com';
 
