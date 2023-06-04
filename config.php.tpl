@@ -156,3 +156,9 @@ define('NOSTATSCOLLECTION', 1);
 // which is useful for me for future developments
 // $stats_collection_address = 'phplist-stats@phplist.com';
 
+// Keeping send speed below provider limits : 250 msgs / h
+// Send a batch of 4 messages per batch period:
+define("MAILQUEUE_BATCH_SIZE",4);
+
+// batch period is set to 60 seconds
+define("MAILQUEUE_BATCH_PERIOD",60);
