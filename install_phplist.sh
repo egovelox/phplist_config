@@ -57,6 +57,22 @@ echo "Done with nginx.conf"
 echo "Restarting nginx..."
 sudo systemctl restart nginx
 
+## prepare a shell script to be used in cron tasks
+
+envsubst '${SITE_NAME}' < "${CLONED_DIR}/phplist.tpl" > "${CLONED_DIR}/phplist"
+sudo cp "${CLONED_DIR}/phplist" /usr/local/bin/phplist
+chmod 755 /usr/local/bin/phplist
+
+# prepare a folder for the phplist cron jobs to write their logs
+#
+sudo mkdir /var/log/phplist_cron
+
+envsubst '${SITE_NAME}' < "${CLONED_DIR}/phplist_cron_jobs.tpl" > "${CLONED_DIR}/phplist_cron_jobs"
+crontab -l > "${CLONED_DIR}/current_cron"
+cat "${CLONED_DIR}/phplist_cron_jobs" >> "${CLONED_DIR}/current_cron"
+sudo crontab "${CLONED_DIR}/current_cron"
+
 echo "All done ! PHPlist was successfully installed."
 echo "You can check https://${SITE_NAME} before you configure DB"
+echo "You can check crontab -l before you configure DB"
 

@@ -91,7 +91,8 @@ $bounce_protocol = 'pop';
 // commandline option. If this is 0, users cannot run the page from the web
 // frontend. Read README.commandline to find out how to set it up on the
 // commandline
-define('MANUALLY_PROCESS_BOUNCES', 1);
+define ("MANUALLY_PROCESS_BOUNCES",0);
+define ("MANUALLY_PROCESS_QUEUE",0);
 
 // when the protocol is pop, specify these three
 $bounce_mailbox_host = '${POP_MAILER_HOST}';
@@ -138,6 +139,9 @@ define('HASH_ALGO', 'sha256');
 // phpList, which is beneficial to future developments.
 // By default the webpages and the HTML emails will include an image and
 // the text emails will include a powered by line
+
+// The following 2 params will disable the phplist icon, but not the text.
+// REMEMBER : see README to know how to delete the text credits
 
 // If you want to remove the image from the HTML emails, set this constant
 // to be 1, the HTML emails will then only add a line of text as signature
