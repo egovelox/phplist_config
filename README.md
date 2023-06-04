@@ -72,6 +72,12 @@ unzip master.zip
 cp -r phplist-plugin-recaptcha-master/plugins/* "${PHP_LIST_DIR}"/admin/plugins/
 ```
 
-#### Monitoring
+#### Recaptcha Monitoring
 
 [https://www.google.com/recaptcha/admin](https://www.google.com/recaptcha/admin)
+
+#### Last steps
+
+You might want to customize phplist (e.g subscribe pages)
+
+See post_config_resources folder.
