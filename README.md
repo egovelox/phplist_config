@@ -78,6 +78,10 @@ cp -r phplist-plugin-recaptcha-master/plugins/* "${PHP_LIST_DIR}"/admin/plugins/
 
 #### Last steps
 
-You might want to customize phplist (e.g subscribe pages)
+You might want to customize phplist (e.g subscribe pages) ?
 
 See post_config_resources folder.
+
+If needed, disable credits text :
+
+in ``/admin/sendemaillib.php`` you should set ``$html[‘signature’] = "";``
