@@ -52,6 +52,9 @@ sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
 
 sudo certbot run -n --nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
 
+# to renew, use: 
+# sudo certbot certonly -n --nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
+
 ```
 
 ## Install Recaptcha PHPList plugin :
