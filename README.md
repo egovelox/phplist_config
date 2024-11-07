@@ -53,8 +53,11 @@ sudo ln -s /opt/certbot/bin/certbot /usr/bin/certbot
 sudo certbot run -n --nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
 
 # to renew, use: 
+# ( you can add --force-renewal )
 # sudo certbot certonly -n --nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
 
+# to read the expiration-date, use:
+# sudo certbot certificates
 ```
 
 ## Install Recaptcha PHPList plugin :
