@@ -58,6 +58,8 @@ sudo certbot run -n --nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
 
 # to read the expiration-date, use:
 # sudo certbot certificates
+# or use
+# sudo openssl x509 -dates -noout -in /etc/letsencrypt/live/my.domain.com-000x/fullchain.pem
 ```
 
 ## Install Recaptcha PHPList plugin :
