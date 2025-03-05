@@ -62,6 +62,21 @@ sudo certbot run -n --nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
 # sudo openssl x509 -dates -noout -in /etc/letsencrypt/live/my.domain.com-000x/fullchain.pem
 ```
 
+## Configure cron
+
+If needed you can list current cron jobs with :
+```bash
+sudo crontab -l
+```
+
+We have crons for PHPList, 
+and we can have a cron for certbot renewal, running everyday at 00:00
+( though renewal will not happen everyday, but only when the cert is due for renewal )
+
+```bash
+0 0 * * * certbot certonly -n --nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
+```
+
 ## Install Recaptcha PHPList plugin :
 
 #### Documentation 
