@@ -77,6 +77,25 @@ and we can have a cron for certbot renewal, running everyday at 00:00
 0 0 * * * certbot certonly -n --nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
 ```
 
+### Note
+
+if you see an error in `/var/log/letsencrypt/letsencrypt.log`
+
+```
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: NoInstallationError("Could not find a usable 'nginx' binary. 
+Ensure nginx exists, the binary is executable, and your PATH is set correctly.")
+```
+fix it using [certbot documentation](https://eff-certbot.readthedocs.io/en/stable/using.html#certbot-command-line-options)
+and this [stackoverflow post](https://stackoverflow.com/questions/67049573/could-not-find-a-usable-nginx-binary-ensure-nginx-exists-the-binary-is-execu)  
+
+The cron command would then be :
+
+```bash
+0 0 * * * certbot certonly -n --nginx --nginx-ctl /usr/sbin/nginx --nginx-server-root /etc/nginx --agree-tos -d "${DOMAIN}" -m "${MAIL}" --redirect
+```
+
+
 ## Install Recaptcha PHPList plugin :
 
 #### Documentation 
